@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}About{% endblock %}
+{% block head %}
+<style>
+    .social {
+        height: 50px;
+        width: 50px;
+    }
+</style>
+
+{% endblock %}
+{% block body %}
+<p>The Leaderboard App for Tree Planters</p>
+<p>
+    <strong>Email:</strong> <a href="mailto:info@plantingbuddy.com">info@plantingbuddy.com</a>
+</p>
+<p>
+    <a href="https://www.linkedin.com/company/71404123" target="_blank"><img class="social" src="{{url_for('static',filename='social_logos/linkedin.png')}}"></a>
+    <a href="https://www.facebook.com/plantingbuddy" target="_blank"><img class="social" src="{{url_for('static',filename='social_logos/fb.png')}}"></a>
+    <a href="https://www.instagram.com/plantingbuddy/" target="_blank"><img class="social" src="{{url_for('static',filename='social_logos/insta.png')}}"></a>
+    <a href="https://www.twitter.com/PlantingBuddy" target="_blank"><img class="social" src="{{url_for('static',filename='social_logos/twitter.png')}}"></a>
+    <a href="https://youtube.com/channel/UCEiikyNC71gl5CBJpIMSxGQ" target="_blank"><img class="social" src="{{url_for('static',filename='social_logos/yt.png')}}"></a>
+</p>
+
+{% endblock %}

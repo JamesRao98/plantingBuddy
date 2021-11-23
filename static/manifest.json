@@ -1,0 +1,22 @@
+{
+  "name": "Planting Buddy",
+  "short_name": "Planting Buddy",
+  "theme_color": "white",
+  "background_color": "white",
+  "display": "standalone",
+  "Scope": "/",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "splash_pages": null
+}

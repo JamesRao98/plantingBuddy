@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Leaderboard{% endblock %}
+{% block body %}
+<form action="/change_crew" method="post">
+    <div class="form-group">
+        <input name="crew" type="text" placeholder="Crew" value="{{crew}}" class="form-control" data-toggle="tooltip" title="Other planters with the same Crew as you will appear on your leaderboard.">
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Update Crew" class="btn btn-success btn-block">
+    </div>
+</form>
+{{table|safe}}
+<script>
+    $(document).ready(function(){
+      $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
+{% endblock %}

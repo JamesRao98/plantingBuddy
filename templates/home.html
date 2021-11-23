@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block body %}
+
+<form action="/upload" method="post">
+    <input type="text" id="data" name="data" hidden>
+    <div class="form-group">
+        <input type="submit" value="Leaderboard" class="btn btn-success btn-block btn-lg" id="lb">
+    </div>
+</form>
+<div class="form-group">
+    <input type="date" id="date" class="form-control">
+</div>
+<div class="form-group">
+    <input type="Number" id="trees" placeholder="Trees" class="form-control">
+</div>
+<div class="form-group">
+    <button class="btn btn-success btn-block" id="add" onclick = "client.addDay()">Add Day</button>
+</div>
+
+<p id="total"></p>
+<div id="table"></div>
+<script>
+    var element_IDs = {
+        "lb_button": "lb",
+        "date_input": "date",
+        "trees_input": "trees",
+        "add_button": "add",
+        "total_display": "total",
+        "table": "table",
+        "data_input": "data"
+    }
+
+    var client = new Client(element_IDs, '{{data|safe}}');
+
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register("/sw.js").then(function(serviceWorkerRegistration) {
+        console.log("Service Worker Running")
+        return serviceWorkerRegistration.pushManager.subscribe({userVisibleOnly: true, applicationServerKey: "BDOwG-irsAoBYp0CSI0_XAe1iyK8x2HTdjDOE6I0RJTGhWfOa5EZ8kJOF6cSyeLZoLG_-RZvUyFs8rd0m8Z2pHM"})
+      }).then(function(pushSub){
+        var xhttp=new XMLHttpRequest();
+        xhttp.open("POST","/updateSubscription?next=",true)
+        xhttp.setRequestHeader('content-type', 'application/x-www-form-urlencoded;charset=UTF-8');
+        xhttp.send("data="+JSON.stringify(pushSub))
+      }).catch(err => {
+        console.log(err);
+      })
+    }
+</script>
+
+{% endblock %}

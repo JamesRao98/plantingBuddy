@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="The Leaderboard App for Tree Planters">
+    <meta name="keywords" content="tree planting, tree planter, reforestation, silviculture, forestry">
+
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="icon" href="{{url_for('static',filename='logo.png')}}">
+    <link rel="manifest" href="{{url_for('static',filename='manifest.json')}}">
+    <link rel="apple-touch-icon" href="{{url_for('static',filename='apple.png')}}">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="{{url_for('static',filename='main.js')}}"></script>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-148925918-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-148925918-2');
+    </script>
+
+    <script data-ad-client="ca-pub-7836599801021533" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    {% block head %}{% endblock %}
+</head>
+<body>
+<br>
+<div class="container">
+    <div class="float-right">{{login_status|safe}}</div><br><br>
+    <h1 class="display-5"><img src="{{url_for('static',filename='title.png')}}" width="100%"></h1>
+    <nav class="nav">
+        <a class="nav-link" href="/">Home</a>
+        <a class="nav-link" href="/about">About</a>
+    </nav>
+    <hr>
+    {% block body %}{% endblock %}
+    {% with messages=get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+</div>
+
+</body>
+</html>
